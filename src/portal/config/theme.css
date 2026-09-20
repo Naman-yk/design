@@ -1,0 +1,319 @@
+:root {
+  --byte-accent: #22c579;
+  --byte-accent-bright: #52e0a6;
+  --byte-accent-dim: #1a9c5f;
+  --byte-accent-glow: rgba(34, 197, 121, 0.28);
+  --byte-accent-tint: rgba(34, 197, 121, 0.1);
+
+  --bg-base: #060807;
+  --bg-primary: #0a0d0b;
+  --bg-surface: #101412;
+  --bg-surface-elevated: #161b18;
+  --bg-surface-hover: #1c231f;
+  --bg-glass: rgba(10, 13, 11, 0.88);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a3a8a5;
+  --text-muted: #6e7571;
+  --text-dim: #444b47;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.15);
+  --border-accent: rgba(34, 197, 121, 0.35);
+  --border-accent-bright: rgba(82, 224, 166, 0.65);
+
+  --status-passed: #22c579;
+  --status-passed-bg: rgba(34, 197, 121, 0.14);
+  --status-passed-border: rgba(34, 197, 121, 0.35);
+
+  --status-unlocked: #38bdf8;
+  --status-unlocked-bg: rgba(56, 189, 248, 0.14);
+  --status-unlocked-border: rgba(56, 189, 248, 0.35);
+
+  --status-in-progress: #38bdf8;
+  --status-in-progress-bg: rgba(56, 189, 248, 0.14);
+  --status-in-progress-border: rgba(56, 189, 248, 0.35);
+
+  --status-queued: #eab308;
+  --status-queued-bg: rgba(234, 179, 8, 0.14);
+  --status-queued-border: rgba(234, 179, 8, 0.35);
+
+  --status-verifying: #c084fc;
+  --status-verifying-bg: rgba(192, 132, 252, 0.14);
+  --status-verifying-border: rgba(192, 132, 252, 0.35);
+
+  --status-failed: #ef4444;
+  --status-failed-bg: rgba(239, 68, 68, 0.14);
+  --status-failed-border: rgba(239, 68, 68, 0.35);
+
+  --status-review: #f59e0b;
+  --status-review-bg: rgba(245, 158, 11, 0.14);
+  --status-review-border: rgba(245, 158, 11, 0.35);
+
+  --status-infra: #ec4899;
+  --status-infra-bg: rgba(236, 72, 153, 0.14);
+  --status-infra-border: rgba(236, 72, 153, 0.35);
+
+  --status-locked: #6e7571;
+  --status-locked-bg: rgba(110, 117, 113, 0.1);
+  --status-locked-border: rgba(110, 117, 113, 0.2);
+
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Sora', 'Clash Display', sans-serif;
+  --font-brand: 'Baloo 2', 'Sora', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 6px 16px -2px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 32px -4px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 32px -4px rgba(34, 197, 121, 0.32);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-base);
+  background-image: 
+    radial-gradient(ellipse at 50% -10%, rgba(34, 197, 121, 0.14), transparent 60%),
+    radial-gradient(circle at 100% 20%, rgba(34, 197, 121, 0.05), transparent 40%),
+    radial-gradient(circle at 0% 80%, rgba(56, 189, 248, 0.04), transparent 40%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Global Node Mesh Layer from byte-afterburn */
+.global-mesh-layer {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.global-mesh-layer .node-mesh {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.global-mesh-layer .title-network {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--byte-accent);
+}
+
+/* Focus styles for keyboard a11y */
+:focus-visible {
+  outline: 2px solid var(--byte-accent-bright);
+  outline-offset: 3px;
+}
+
+/* Typography utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  margin-top: 0;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: var(--byte-accent);
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+a:hover {
+  color: var(--byte-accent-bright);
+}
+
+/* The signature Byte Mint Box (e.g. "THE PRESIDENT", "ACTIVE MISSION") */
+.byte-mint-box {
+  background: var(--byte-accent);
+  color: #060807;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  display: inline-block;
+  box-shadow: 0 0 20px rgba(34, 197, 121, 0.35);
+}
+
+/* Chapter coordinate tag (e.g. "01 THE UNCS", "N01") */
+.byte-coord-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--byte-accent-bright);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Card and Container utilities */
+.byte-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.byte-card:hover {
+  border-color: rgba(34, 197, 121, 0.25);
+}
+
+.byte-card-elevated {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.byte-glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button utilities */
+.byte-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Solid mint green button exactly like "JOIN US" on the live site */
+.byte-btn-primary {
+  background: var(--byte-accent);
+  color: #060807;
+  border-color: var(--byte-accent);
+  box-shadow: 0 4px 14px rgba(34, 197, 121, 0.3);
+}
+.byte-btn-primary:hover:not(:disabled) {
+  background: var(--byte-accent-bright);
+  border-color: var(--byte-accent-bright);
+  box-shadow: 0 6px 20px rgba(82, 224, 166, 0.45);
+  transform: translateY(-1.5px);
+}
+.byte-btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.byte-btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+.byte-btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1.5px);
+}
+
+.byte-btn-sm {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+  border-radius: 5px;
+}
+
+.byte-btn-lg {
+  padding: 0.75rem 1.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 16px rgba(34, 197, 121, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(82, 224, 166, 0.5);
+  }
+}
+
+.animate-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
