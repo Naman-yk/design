@@ -61,7 +61,7 @@ export const LogEditor: React.FC<LogEditorProps> = ({
     <div
       className="byte-card"
       style={{
-        padding: '1.75rem',
+        padding: 'clamp(1.15rem, 2.5vw, 1.75rem)',
         marginBottom: '2rem'
       }}
     >

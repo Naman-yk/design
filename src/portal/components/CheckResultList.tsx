@@ -17,7 +17,7 @@ export const CheckResultList: React.FC<CheckResultListProps> = ({ checks }) => {
     <div
       className="byte-card"
       style={{
-        padding: '1.75rem',
+        padding: 'clamp(1.15rem, 2.5vw, 1.75rem)',
         marginBottom: '2rem'
       }}
     >
@@ -28,7 +28,9 @@ export const CheckResultList: React.FC<CheckResultListProps> = ({ checks }) => {
           justifyContent: 'space-between',
           marginBottom: '1.25rem',
           borderBottom: '1px solid var(--border-subtle)',
-          paddingBottom: '0.75rem'
+          paddingBottom: '0.75rem',
+          flexWrap: 'wrap',
+          gap: '0.5rem'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
@@ -62,8 +64,8 @@ export const CheckResultList: React.FC<CheckResultListProps> = ({ checks }) => {
             style={{
               display: 'flex',
               alignItems: 'flex-start',
-              gap: '1rem',
-              padding: '1rem 1.25rem',
+              gap: '0.75rem',
+              padding: 'clamp(0.75rem, 2vw, 1rem) clamp(0.75rem, 2vw, 1.25rem)',
               borderRadius: '8px',
               border: `1px solid ${
                 check.passed ? 'rgba(34, 197, 121, 0.2)' : 'rgba(239, 68, 68, 0.25)'

@@ -24,8 +24,8 @@ export const ProgressHeader: React.FC<ProgressHeaderProps> = ({ progress }) => {
     <div
       className="byte-card-elevated"
       style={{
-        padding: '2.25rem 2.5rem',
-        marginBottom: '2.5rem',
+        padding: 'clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 3vw, 2.5rem)',
+        marginBottom: '2rem',
         border: '1px solid rgba(34, 197, 121, 0.25)',
         background: 'linear-gradient(135deg, rgba(16, 21, 18, 0.95) 0%, rgba(8, 10, 9, 0.98) 100%)'
       }}
@@ -36,16 +36,16 @@ export const ProgressHeader: React.FC<ProgressHeaderProps> = ({ progress }) => {
           flexWrap: 'wrap',
           alignItems: 'center',
           justifyContent: 'space-between',
-          gap: '2rem'
+          gap: '1.5rem'
         }}
       >
         {/* Left column: titles & coordinates */}
-        <div style={{ flex: '1 1 360px' }}>
+        <div style={{ flex: '1 1 280px', minWidth: 0 }}>
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.85rem',
+              gap: '0.75rem',
               marginBottom: '0.75rem',
               flexWrap: 'wrap'
             }}
@@ -83,11 +83,11 @@ export const ProgressHeader: React.FC<ProgressHeaderProps> = ({ progress }) => {
 
           <h1
             style={{
-              fontSize: '2.6rem',
-              lineHeight: 1.1,
+              fontSize: 'clamp(1.75rem, 5.5vw, 2.6rem)',
+              lineHeight: 1.15,
               fontWeight: 800,
               margin: '0 0 0.75rem 0',
-              letterSpacing: '-0.04em'
+              letterSpacing: '-0.03em'
             }}
           >
             BYTE <span style={{ color: 'var(--byte-accent)' }}>/</span> ARCHIVE 047
@@ -112,12 +112,13 @@ export const ProgressHeader: React.FC<ProgressHeaderProps> = ({ progress }) => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '1.75rem',
+            gap: 'clamp(1rem, 2.5vw, 1.75rem)',
             background: 'rgba(0, 0, 0, 0.4)',
-            padding: '1.5rem 1.75rem',
+            padding: 'clamp(1rem, 2.5vw, 1.5rem) clamp(1rem, 2.5vw, 1.75rem)',
             borderRadius: '12px',
             border: '1px solid var(--border-accent)',
-            flex: '0 1 380px'
+            flex: '1 1 280px',
+            minWidth: 0
           }}
         >
           {/* Circular progress visual */}

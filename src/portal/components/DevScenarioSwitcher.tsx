@@ -74,10 +74,11 @@ export const DevScenarioSwitcher: React.FC<DevScenarioSwitcherProps> = ({ onScen
     <div
       style={{
         position: 'fixed',
-        bottom: '20px',
-        right: '20px',
+        bottom: 'clamp(12px, 2.5vw, 20px)',
+        right: 'clamp(12px, 2.5vw, 20px)',
         zIndex: 9999,
-        fontFamily: 'var(--font-body)'
+        fontFamily: 'var(--font-body)',
+        maxWidth: 'calc(100vw - 24px)'
       }}
     >
       {/* Floating pill trigger */}
@@ -87,23 +88,23 @@ export const DevScenarioSwitcher: React.FC<DevScenarioSwitcherProps> = ({ onScen
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.6rem 1rem',
+            gap: '0.45rem',
+            padding: '0.5rem 0.85rem',
             borderRadius: '9999px',
             background: 'var(--bg-surface-elevated)',
             border: '1px solid var(--border-accent)',
             boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
             color: 'var(--text-primary)',
-            fontSize: '0.8125rem',
+            fontSize: '0.8rem',
             fontWeight: 600,
             cursor: 'pointer',
             backdropFilter: 'blur(12px)'
           }}
           title="Switch evaluation test scenario"
         >
-          <Sparkles style={{ width: '15px', height: '15px', color: 'var(--byte-accent)' }} />
+          <Sparkles style={{ width: '14px', height: '14px', color: 'var(--byte-accent)' }} />
           <span>Scenario:</span>
-          <span style={{ color: 'var(--byte-accent-bright)', maxWidth: '140px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span style={{ color: 'var(--byte-accent-bright)', maxWidth: 'clamp(80px, 24vw, 150px)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {activeDef?.name || activeId}
           </span>
           <Settings style={{ width: '13px', height: '13px', color: 'var(--text-muted)' }} />
@@ -114,8 +115,8 @@ export const DevScenarioSwitcher: React.FC<DevScenarioSwitcherProps> = ({ onScen
       {isOpen && (
         <div
           style={{
-            width: '380px',
-            maxHeight: '80vh',
+            width: 'min(380px, calc(100vw - 24px))',
+            maxHeight: 'calc(100dvh - 36px)',
             display: 'flex',
             flexDirection: 'column',
             background: 'var(--bg-surface-elevated)',

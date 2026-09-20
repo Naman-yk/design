@@ -58,13 +58,13 @@ export const StageRow: React.FC<StageRowProps> = ({ stage, isCurrent }) => {
     <div
       className="byte-card"
       style={{
-        padding: '1.35rem 1.75rem',
+        padding: 'clamp(1rem, 2.5vw, 1.35rem) clamp(0.85rem, 2.5vw, 1.75rem)',
         marginBottom: '1rem',
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'space-between',
-        gap: '1.25rem',
+        gap: '1rem',
         borderColor: isCurrent
           ? 'var(--border-accent)'
           : stage.status === 'passed'
@@ -83,12 +83,12 @@ export const StageRow: React.FC<StageRowProps> = ({ stage, isCurrent }) => {
       }}
     >
       {/* Left info & coordinate */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flex: '1 1 340px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(0.75rem, 2vw, 1.25rem)', flex: '1 1 240px', minWidth: 0 }}>
         {/* Node coordinate box (e.g. N01, N02) */}
         <div
           style={{
-            width: '46px',
-            height: '46px',
+            width: '42px',
+            height: '42px',
             borderRadius: '8px',
             background: stage.status === 'passed'
               ? 'var(--status-passed-bg)'
@@ -115,7 +115,7 @@ export const StageRow: React.FC<StageRowProps> = ({ stage, isCurrent }) => {
             justifyContent: 'center',
             fontFamily: 'var(--font-mono)',
             fontWeight: 800,
-            fontSize: '0.85rem',
+            fontSize: '0.82rem',
             color: stage.status === 'passed'
               ? 'var(--status-passed)'
               : stage.status === 'queued'
@@ -129,21 +129,22 @@ export const StageRow: React.FC<StageRowProps> = ({ stage, isCurrent }) => {
           }}
         >
           {stage.status === 'passed' ? (
-            <CheckCircle2 style={{ width: '22px', height: '22px' }} />
+            <CheckCircle2 style={{ width: '20px', height: '20px' }} />
           ) : (
             `N0${stage.id}`
           )}
         </div>
 
         {/* Title, subtitle, meta */}
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
+        <div style={{ minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
             <h3
               style={{
-                fontSize: '1.125rem',
+                fontSize: 'clamp(0.95rem, 3vw, 1.125rem)',
                 fontWeight: 800,
                 margin: 0,
-                color: isLocked ? 'var(--text-secondary)' : '#ffffff'
+                color: isLocked ? 'var(--text-secondary)' : '#ffffff',
+                wordBreak: 'break-word'
               }}
             >
               Stage {stage.id}: {stage.title}
@@ -152,11 +153,11 @@ export const StageRow: React.FC<StageRowProps> = ({ stage, isCurrent }) => {
               <span
                 style={{
                   fontFamily: 'var(--font-mono)',
-                  fontSize: '0.6875rem',
+                  fontSize: '0.65rem',
                   color: 'var(--byte-accent-bright)',
                   background: 'rgba(34, 197, 121, 0.14)',
                   border: '1px solid var(--border-accent)',
-                  padding: '0.1rem 0.5rem',
+                  padding: '0.1rem 0.45rem',
                   borderRadius: '4px',
                   fontWeight: 800
                 }}
@@ -173,7 +174,7 @@ export const StageRow: React.FC<StageRowProps> = ({ stage, isCurrent }) => {
               display: 'flex',
               flexWrap: 'wrap',
               alignItems: 'center',
-              gap: '1rem'
+              gap: '0.75rem'
             }}
           >
             {stage.subtitle && <span>{stage.subtitle}</span>}
@@ -188,7 +189,7 @@ export const StageRow: React.FC<StageRowProps> = ({ stage, isCurrent }) => {
       </div>
 
       {/* Right status & action */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
         <StatusBadge status={stage.status} />
 
         {isActionable ? (
@@ -209,7 +210,7 @@ export const StageRow: React.FC<StageRowProps> = ({ stage, isCurrent }) => {
               display: 'flex',
               alignItems: 'center',
               gap: '0.4rem',
-              fontSize: '0.78rem',
+              fontSize: '0.75rem',
               color: 'var(--text-dim)',
               fontFamily: 'var(--font-mono)'
             }}

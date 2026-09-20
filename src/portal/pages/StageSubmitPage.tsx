@@ -134,7 +134,7 @@ export const StageSubmitPage: React.FC = () => {
         <div
           className="byte-card-elevated animate-glow"
           style={{
-            padding: '3rem 2.5rem',
+            padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2.5rem)',
             textAlign: 'center',
             maxWidth: '680px',
             margin: '2rem auto',
@@ -210,7 +210,7 @@ export const StageSubmitPage: React.FC = () => {
         <div
           className="byte-card-elevated"
           style={{
-            padding: '3rem 2.5rem',
+            padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2.5rem)',
             textAlign: 'center',
             maxWidth: '680px',
             margin: '2rem auto',
@@ -379,7 +379,7 @@ export const StageSubmitPage: React.FC = () => {
       <div
         className="byte-card"
         style={{
-          padding: '1.75rem 2rem',
+          padding: 'clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 3vw, 2rem)',
           marginBottom: '2rem'
         }}
       >
@@ -399,7 +399,7 @@ export const StageSubmitPage: React.FC = () => {
             STAGE 0{briefing.stageId} SUBMISSION
           </span>
         </div>
-        <h1 style={{ fontSize: '1.85rem', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
+        <h1 style={{ fontSize: 'clamp(1.4rem, 4vw, 1.85rem)', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
           Submit Solution for Verification
         </h1>
         <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
@@ -482,7 +482,7 @@ export const StageSubmitPage: React.FC = () => {
         <div
           className="byte-card-elevated"
           style={{
-            padding: '1.5rem 2rem',
+            padding: 'clamp(1.25rem, 3vw, 1.5rem) clamp(1rem, 3vw, 2rem)',
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
@@ -491,7 +491,7 @@ export const StageSubmitPage: React.FC = () => {
             border: '1px solid var(--border-accent)'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.8125rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.8125rem', flex: '1 1 240px' }}>
             <ShieldCheck style={{ width: '16px', height: '16px', color: 'var(--byte-accent)' }} />
             <span>Submissions are strictly evaluated against non-leaked test suites.</span>
           </div>
@@ -499,7 +499,7 @@ export const StageSubmitPage: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="byte-btn byte-btn-primary byte-btn-lg animate-glow"
+            className="byte-btn byte-btn-primary byte-btn-lg byte-mobile-w-full animate-glow"
             style={{ minWidth: '220px' }}
           >
             {isSubmitting ? (

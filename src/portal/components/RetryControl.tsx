@@ -26,7 +26,7 @@ export const RetryControl: React.FC<RetryControlProps> = ({
     <div
       className="byte-card"
       style={{
-        padding: '1.5rem 1.75rem',
+        padding: 'clamp(1.15rem, 2.5vw, 1.5rem) clamp(1rem, 2.5vw, 1.75rem)',
         marginBottom: '2rem',
         display: 'flex',
         flexWrap: 'wrap',
@@ -45,8 +45,8 @@ export const RetryControl: React.FC<RetryControlProps> = ({
           : '1px solid var(--border-accent)'
       }}
     >
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
+      <div style={{ flex: '1 1 260px', minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>
             Attempt Status:
           </span>
@@ -95,12 +95,12 @@ export const RetryControl: React.FC<RetryControlProps> = ({
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', flex: '1 1 200px' }}>
         {isCooldownActive && (
           <button
             type="button"
             onClick={() => setForceUnlocked(true)}
-            className="byte-btn byte-btn-secondary byte-btn-sm"
+            className="byte-btn byte-btn-secondary byte-btn-sm byte-mobile-w-full"
             style={{ fontSize: '0.75rem', opacity: 0.85 }}
             title="Fast forward cooldown timer for verification testing"
           >
@@ -113,7 +113,7 @@ export const RetryControl: React.FC<RetryControlProps> = ({
           type="button"
           onClick={onRetry}
           disabled={!canRetry}
-          className={`byte-btn ${canRetry ? 'byte-btn-primary animate-glow' : 'byte-btn-secondary'}`}
+          className={`byte-btn byte-mobile-w-full ${canRetry ? 'byte-btn-primary animate-glow' : 'byte-btn-secondary'}`}
           style={{ minWidth: '170px' }}
         >
           <RefreshCw style={{ width: '15px', height: '15px' }} className={isLoading ? 'animate-spin' : ''} />

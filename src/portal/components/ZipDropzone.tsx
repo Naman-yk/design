@@ -168,8 +168,9 @@ export const ZipDropzone: React.FC<ZipDropzoneProps> = ({
         <div
           className="byte-card"
           style={{
-            padding: '1.25rem 1.5rem',
+            padding: '1rem clamp(0.75rem, 2vw, 1.5rem)',
             display: 'flex',
+            flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '1rem',
@@ -177,33 +178,35 @@ export const ZipDropzone: React.FC<ZipDropzoneProps> = ({
             background: 'rgba(34, 197, 121, 0.04)'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: '1 1 200px', minWidth: 0 }}>
             <div
               style={{
-                width: '42px',
-                height: '42px',
+                width: '40px',
+                height: '40px',
                 borderRadius: '8px',
                 background: 'rgba(34, 197, 121, 0.15)',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                flexShrink: 0
               }}
             >
-              <FileArchive style={{ width: '22px', height: '22px', color: 'var(--byte-accent)' }} />
+              <FileArchive style={{ width: '20px', height: '20px', color: 'var(--byte-accent)' }} />
             </div>
-            <div>
+            <div style={{ minWidth: 0 }}>
               <div
                 style={{
                   fontWeight: 600,
-                  fontSize: '0.95rem',
+                  fontSize: '0.9rem',
                   color: 'var(--text-primary)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.5rem'
+                  gap: '0.4rem',
+                  wordBreak: 'break-all'
                 }}
               >
                 <span>{selectedFile.name}</span>
-                <CheckCircle2 style={{ width: '15px', height: '15px', color: 'var(--byte-accent)' }} />
+                <CheckCircle2 style={{ width: '15px', height: '15px', color: 'var(--byte-accent)', flexShrink: 0 }} />
               </div>
               <div
                 style={{
@@ -221,7 +224,7 @@ export const ZipDropzone: React.FC<ZipDropzoneProps> = ({
             type="button"
             onClick={() => onFileSelect(null)}
             disabled={disabled}
-            className="byte-btn byte-btn-secondary byte-btn-sm"
+            className="byte-btn byte-btn-secondary byte-btn-sm byte-mobile-w-full"
             style={{ padding: '0.4rem 0.6rem' }}
             title="Remove selected file"
           >

@@ -317,3 +317,87 @@ a:hover {
 .animate-fade-in {
   animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ==========================================================================
+   Responsive & Mobile Adaptations
+   ========================================================================== */
+
+/* Mobile display utilities */
+.mobile-only {
+  display: none !important;
+}
+
+.desktop-only {
+  display: flex !important;
+}
+
+@media (max-width: 860px) {
+  .mobile-only {
+    display: flex !important;
+  }
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Mobile responsive card padding */
+@media (max-width: 640px) {
+  .byte-card {
+    padding: 1.15rem 1rem !important;
+    border-radius: 10px !important;
+  }
+
+  .byte-card-elevated {
+    padding: 1.25rem 1rem !important;
+    border-radius: 12px !important;
+  }
+
+  .byte-banner-card {
+    padding: 1.35rem 1.1rem !important;
+  }
+
+  .byte-mobile-w-full {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .byte-mobile-stack {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .byte-mobile-gap-sm {
+    gap: 0.65rem !important;
+  }
+
+  /* Reduce large typography for mobile devices */
+  h1 {
+    font-size: clamp(1.65rem, 6.5vw, 2.25rem) !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 5vw, 1.65rem) !important;
+  }
+
+  h3 {
+    font-size: 1.05rem !important;
+  }
+
+  /* Safe tap target sizes */
+  .byte-btn {
+    min-height: 40px;
+  }
+
+  .byte-btn-lg {
+    min-height: 46px;
+    padding: 0.65rem 1.25rem !important;
+    font-size: 0.9375rem !important;
+  }
+}
+
+/* Prevent horizontal scroll bleed on mobile touch devices */
+html, body, #root {
+  max-width: 100vw;
+  overflow-x: hidden;
+}

@@ -44,7 +44,7 @@ export const WorkspacePanel: React.FC<WorkspacePanelProps> = ({
     <div
       className="byte-card-elevated"
       style={{
-        padding: '1.75rem',
+        padding: 'clamp(1.15rem, 2.5vw, 1.75rem)',
         marginBottom: '2rem',
         border: '1px solid var(--border-medium)',
         background: 'linear-gradient(180deg, var(--bg-surface-elevated) 0%, var(--bg-surface) 100%)'
@@ -129,7 +129,7 @@ export const WorkspacePanel: React.FC<WorkspacePanelProps> = ({
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
-          gap: '0.85rem',
+          gap: '0.75rem',
           marginBottom: '1rem'
         }}
       >
@@ -138,7 +138,7 @@ export const WorkspacePanel: React.FC<WorkspacePanelProps> = ({
             href={workspace.hostedUrl || 'https://stackblitz.com/'}
             target="_blank"
             rel="noopener noreferrer"
-            className="byte-btn byte-btn-primary"
+            className="byte-btn byte-btn-primary byte-mobile-w-full"
             style={{ textDecoration: 'none' }}
           >
             <Sparkles style={{ width: '16px', height: '16px' }} />
@@ -151,7 +151,7 @@ export const WorkspacePanel: React.FC<WorkspacePanelProps> = ({
           <button
             onClick={handleDownload}
             disabled={isLoadingStarter}
-            className="byte-btn byte-btn-secondary"
+            className="byte-btn byte-btn-secondary byte-mobile-w-full"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
           >
             {downloadTriggered ? (
@@ -170,11 +170,10 @@ export const WorkspacePanel: React.FC<WorkspacePanelProps> = ({
 
         <button
           onClick={() => setShowLocalSteps(!showLocalSteps)}
-          className="byte-btn byte-btn-secondary"
+          className="byte-btn byte-btn-secondary byte-mobile-w-full"
           style={{
-            marginLeft: 'auto',
-            background: 'transparent',
-            border: 'none',
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid var(--border-subtle)',
             color: 'var(--text-secondary)'
           }}
         >

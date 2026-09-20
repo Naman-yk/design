@@ -97,7 +97,7 @@ export const SubmissionResultPage: React.FC = () => {
       <div
         className="byte-card-elevated"
         style={{
-          padding: '2rem',
+          padding: 'clamp(1.25rem, 3vw, 2rem)',
           marginBottom: '2rem',
           position: 'relative',
           overflow: 'hidden',
@@ -356,7 +356,7 @@ export const SubmissionResultPage: React.FC = () => {
         <div
           className="byte-card-elevated animate-glow"
           style={{
-            padding: '1.75rem 2rem',
+            padding: 'clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 3vw, 2rem)',
             marginBottom: '2rem',
             border: '1px solid var(--border-accent)',
             display: 'flex',
@@ -366,30 +366,30 @@ export const SubmissionResultPage: React.FC = () => {
             gap: '1rem'
           }}
         >
-          <div>
+          <div style={{ flex: '1 1 260px', minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: 'var(--byte-accent-bright)', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
               <Sparkles style={{ width: '14px', height: '14px' }} />
               <span>{status.nextStage ? 'NEXT MISSION READY' : 'ALL 6 MISSIONS VERIFIED'}</span>
             </div>
-            <h3 style={{ margin: '0.25rem 0', fontSize: '1.25rem', fontWeight: 800 }}>
+            <h3 style={{ margin: '0.25rem 0', fontSize: 'clamp(1.15rem, 3.5vw, 1.3rem)', fontWeight: 800 }}>
               {status.nextStage ? `Advance to Stage 0${status.nextStage.id}` : 'Archive 047 Protocol Completed!'}
             </h3>
             <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
               {status.nextStage
-                ? `Stage 0${status.stageId} passed. You are cleared to proceed to Stage 0${status.nextStage.id}.`
+                 ? `Stage 0${status.stageId} passed. You are cleared to proceed to Stage 0${status.nextStage.id}.`
                 : 'All missions have been successfully verified and accepted. No further stages remaining.'}
             </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.75rem' }}>
-            <Link to="/tasks" className="byte-btn byte-btn-secondary">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', flex: '1 1 240px' }}>
+            <Link to="/tasks" className="byte-btn byte-btn-secondary byte-mobile-w-full">
               <span>View Tasks Dashboard</span>
             </Link>
 
             {status.nextStage && (
               <Link
                 to={`/tasks/stages/${status.nextStage.id}`}
-                className="byte-btn byte-btn-primary"
+                className="byte-btn byte-btn-primary byte-mobile-w-full"
                 style={{ textDecoration: 'none' }}
               >
                 <span>Begin Stage 0{status.nextStage.id}</span>

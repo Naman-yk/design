@@ -31,7 +31,7 @@ export const DeploymentForm: React.FC<DeploymentFormProps> = ({
     <div
       className="byte-card"
       style={{
-        padding: '1.75rem',
+        padding: 'clamp(1.15rem, 2.5vw, 1.75rem)',
         marginBottom: '2rem'
       }}
     >

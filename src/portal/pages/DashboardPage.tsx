@@ -52,21 +52,21 @@ export const DashboardPage: React.FC = () => {
       {/* 1. SCENARIO: ALL 6 STAGES COMPLETED (100% Verified) */}
       {allStagesPassed ? (
         <div
-          className="byte-card-elevated animate-glow"
+          className="byte-card-elevated byte-banner-card animate-glow"
           style={{
-            padding: '2.5rem',
-            marginBottom: '2.5rem',
+            padding: 'clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 3vw, 2.25rem)',
+            marginBottom: '2rem',
             background: 'linear-gradient(135deg, rgba(34, 197, 121, 0.18) 0%, var(--bg-surface-elevated) 100%)',
             border: '1px solid var(--byte-accent-bright)',
             display: 'flex',
             flexWrap: 'wrap',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '1.75rem'
+            gap: '1.5rem'
           }}
         >
-          <div style={{ flex: '1 1 400px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+          <div style={{ flex: '1 1 280px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
               <span className="byte-mint-box">
                 ALL 6 MISSIONS VERIFIED
               </span>
@@ -75,19 +75,19 @@ export const DashboardPage: React.FC = () => {
               </span>
             </div>
 
-            <h2 style={{ fontSize: '2.1rem', fontWeight: 800, margin: '0 0 0.5rem 0', letterSpacing: '-0.03em' }}>
+            <h2 style={{ fontSize: 'clamp(1.4rem, 4.5vw, 2.1rem)', fontWeight: 800, margin: '0 0 0.5rem 0', letterSpacing: '-0.03em' }}>
               You Have Submitted All Stages Successfully!
             </h2>
 
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
               All 6 technical challenges — Responsive Exhibit, Corrupted Feed Resiliency, Event Synchronization, Field Audit, Vault Service, and Conservation Scanner — have passed 100% automated test verification. Your candidate submission record has been finalized and accepted. No further submissions are required.
             </p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', flex: '1 1 220px' }}>
             <button
               onClick={() => navigate('/tasks/submissions/sub_pass_stage_6')}
-              className="byte-btn byte-btn-primary byte-btn-lg"
+              className="byte-btn byte-btn-primary byte-btn-lg byte-mobile-w-full"
             >
               <Award style={{ width: '18px', height: '18px' }} />
               <span>Review Verification Records</span>
@@ -96,7 +96,7 @@ export const DashboardPage: React.FC = () => {
               href="https://byte-dev.nyahost.in/members/"
               target="_blank"
               rel="noopener noreferrer"
-              className="byte-btn byte-btn-secondary"
+              className="byte-btn byte-btn-secondary byte-mobile-w-full"
             >
               <span>Explore Byte Society</span>
               <ExternalLink style={{ width: '14px', height: '14px' }} />
@@ -106,10 +106,10 @@ export const DashboardPage: React.FC = () => {
       ) : /* 2. SCENARIO: ACTIVE SUBMISSION IN QUEUE (e.g. 409 or slow_queue) */
       currentStage && currentStage.status === 'queued' ? (
         <div
-          className="byte-card-elevated"
+          className="byte-card-elevated byte-banner-card"
           style={{
-            padding: '2.25rem',
-            marginBottom: '2.5rem',
+            padding: 'clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 3vw, 2.25rem)',
+            marginBottom: '2rem',
             background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.12) 0%, var(--bg-surface-elevated) 100%)',
             border: '1px solid rgba(234, 179, 8, 0.4)',
             display: 'flex',
@@ -119,17 +119,17 @@ export const DashboardPage: React.FC = () => {
             gap: '1.5rem'
           }}
         >
-          <div style={{ flex: '1 1 360px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem' }}>
+          <div style={{ flex: '1 1 280px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem', flexWrap: 'wrap' }}>
               <span
                 style={{
                   background: '#eab308',
                   color: '#060807',
                   fontFamily: 'var(--font-heading)',
                   fontWeight: 800,
-                  fontSize: '0.9rem',
+                  fontSize: '0.85rem',
                   textTransform: 'uppercase',
-                  padding: '0.3rem 0.8rem',
+                  padding: '0.25rem 0.75rem',
                   borderRadius: '4px'
                 }}
               >
@@ -140,7 +140,7 @@ export const DashboardPage: React.FC = () => {
               </span>
             </div>
 
-            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
+            <h2 style={{ fontSize: 'clamp(1.3rem, 4vw, 1.75rem)', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
               Stage {currentStage.id}: {currentStage.title}
             </h2>
 
@@ -151,7 +151,7 @@ export const DashboardPage: React.FC = () => {
 
           <Link
             to={`/tasks/submissions/${currentStage.latestSubmissionId || 'sub_active_409'}`}
-            className="byte-btn byte-btn-primary byte-btn-lg animate-glow"
+            className="byte-btn byte-btn-primary byte-btn-lg byte-mobile-w-full animate-glow"
             style={{ textDecoration: 'none' }}
           >
             <Clock style={{ width: '18px', height: '18px' }} />
@@ -162,10 +162,10 @@ export const DashboardPage: React.FC = () => {
       ) : /* 3. SCENARIO: CHANGES REQUIRED (Failed checks / Cooldown) */
       currentStage && currentStage.status === 'failed' ? (
         <div
-          className="byte-card-elevated"
+          className="byte-card-elevated byte-banner-card"
           style={{
-            padding: '2.25rem',
-            marginBottom: '2.5rem',
+            padding: 'clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 3vw, 2.25rem)',
+            marginBottom: '2rem',
             background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, var(--bg-surface-elevated) 100%)',
             border: '1px solid rgba(239, 68, 68, 0.4)',
             display: 'flex',
@@ -175,17 +175,17 @@ export const DashboardPage: React.FC = () => {
             gap: '1.5rem'
           }}
         >
-          <div style={{ flex: '1 1 360px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem' }}>
+          <div style={{ flex: '1 1 280px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem', flexWrap: 'wrap' }}>
               <span
                 style={{
                   background: '#ef4444',
                   color: '#ffffff',
                   fontFamily: 'var(--font-heading)',
                   fontWeight: 800,
-                  fontSize: '0.9rem',
+                  fontSize: '0.85rem',
                   textTransform: 'uppercase',
-                  padding: '0.3rem 0.8rem',
+                  padding: '0.25rem 0.75rem',
                   borderRadius: '4px'
                 }}
               >
@@ -196,7 +196,7 @@ export const DashboardPage: React.FC = () => {
               </span>
             </div>
 
-            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
+            <h2 style={{ fontSize: 'clamp(1.3rem, 4vw, 1.75rem)', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
               Stage {currentStage.id}: {currentStage.title}
             </h2>
 
@@ -207,7 +207,7 @@ export const DashboardPage: React.FC = () => {
 
           <Link
             to={`/tasks/submissions/${currentStage.latestSubmissionId || 'sub_failed_checks'}`}
-            className="byte-btn byte-btn-primary byte-btn-lg"
+            className="byte-btn byte-btn-primary byte-btn-lg byte-mobile-w-full"
             style={{ textDecoration: 'none' }}
           >
             <AlertTriangle style={{ width: '18px', height: '18px' }} />
@@ -218,10 +218,10 @@ export const DashboardPage: React.FC = () => {
       ) : /* 4. SCENARIO: PENDING REVIEWER ATTENTION */
       currentStage && currentStage.status === 'needs_review' ? (
         <div
-          className="byte-card-elevated"
+          className="byte-card-elevated byte-banner-card"
           style={{
-            padding: '2.25rem',
-            marginBottom: '2.5rem',
+            padding: 'clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 3vw, 2.25rem)',
+            marginBottom: '2rem',
             background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, var(--bg-surface-elevated) 100%)',
             border: '1px solid rgba(245, 158, 11, 0.4)',
             display: 'flex',
@@ -231,17 +231,17 @@ export const DashboardPage: React.FC = () => {
             gap: '1.5rem'
           }}
         >
-          <div style={{ flex: '1 1 360px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem' }}>
+          <div style={{ flex: '1 1 280px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem', flexWrap: 'wrap' }}>
               <span
                 style={{
                   background: '#f59e0b',
                   color: '#060807',
                   fontFamily: 'var(--font-heading)',
                   fontWeight: 800,
-                  fontSize: '0.9rem',
+                  fontSize: '0.85rem',
                   textTransform: 'uppercase',
-                  padding: '0.3rem 0.8rem',
+                  padding: '0.25rem 0.75rem',
                   borderRadius: '4px'
                 }}
               >
@@ -252,7 +252,7 @@ export const DashboardPage: React.FC = () => {
               </span>
             </div>
 
-            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
+            <h2 style={{ fontSize: 'clamp(1.3rem, 4vw, 1.75rem)', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
               Stage {currentStage.id}: {currentStage.title}
             </h2>
 
@@ -263,7 +263,7 @@ export const DashboardPage: React.FC = () => {
 
           <Link
             to={`/tasks/submissions/${currentStage.latestSubmissionId || 'sub_needs_review'}`}
-            className="byte-btn byte-btn-primary byte-btn-lg"
+            className="byte-btn byte-btn-primary byte-btn-lg byte-mobile-w-full"
             style={{ textDecoration: 'none' }}
           >
             <HelpCircle style={{ width: '18px', height: '18px' }} />
@@ -273,10 +273,10 @@ export const DashboardPage: React.FC = () => {
       ) : /* 5. SCENARIO: TECHNICAL INFRASTRUCTURE ISSUE */
       currentStage && currentStage.status === 'infra_error' ? (
         <div
-          className="byte-card-elevated"
+          className="byte-card-elevated byte-banner-card"
           style={{
-            padding: '2.25rem',
-            marginBottom: '2.5rem',
+            padding: 'clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 3vw, 2.25rem)',
+            marginBottom: '2rem',
             background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.12) 0%, var(--bg-surface-elevated) 100%)',
             border: '1px solid rgba(236, 72, 153, 0.4)',
             display: 'flex',
@@ -286,17 +286,17 @@ export const DashboardPage: React.FC = () => {
             gap: '1.5rem'
           }}
         >
-          <div style={{ flex: '1 1 360px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem' }}>
+          <div style={{ flex: '1 1 280px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem', flexWrap: 'wrap' }}>
               <span
                 style={{
                   background: '#ec4899',
                   color: '#ffffff',
                   fontFamily: 'var(--font-heading)',
                   fontWeight: 800,
-                  fontSize: '0.9rem',
+                  fontSize: '0.85rem',
                   textTransform: 'uppercase',
-                  padding: '0.3rem 0.8rem',
+                  padding: '0.25rem 0.75rem',
                   borderRadius: '4px'
                 }}
               >
@@ -307,7 +307,7 @@ export const DashboardPage: React.FC = () => {
               </span>
             </div>
 
-            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
+            <h2 style={{ fontSize: 'clamp(1.3rem, 4vw, 1.75rem)', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
               Stage {currentStage.id}: {currentStage.title}
             </h2>
 
@@ -318,7 +318,7 @@ export const DashboardPage: React.FC = () => {
 
           <Link
             to={`/tasks/submissions/${currentStage.latestSubmissionId || 'sub_infra_error'}`}
-            className="byte-btn byte-btn-primary byte-btn-lg"
+            className="byte-btn byte-btn-primary byte-btn-lg byte-mobile-w-full"
             style={{ textDecoration: 'none' }}
           >
             <RefreshCw style={{ width: '18px', height: '18px' }} />
@@ -328,10 +328,10 @@ export const DashboardPage: React.FC = () => {
       ) : /* 6. DEFAULT CANONICAL READY-TO-START STATE */
       currentStage && (currentStage.status === 'unlocked' || currentStage.status === 'in_progress') ? (
         <div
-          className="byte-card-elevated animate-glow"
+          className="byte-card-elevated byte-banner-card animate-glow"
           style={{
-            padding: '2rem 2.25rem',
-            marginBottom: '2.5rem',
+            padding: 'clamp(1.25rem, 3vw, 2.25rem) clamp(1rem, 3vw, 2.25rem)',
+            marginBottom: '2rem',
             background: 'linear-gradient(135deg, rgba(34, 197, 121, 0.12) 0%, var(--bg-surface-elevated) 100%)',
             border: '1px solid var(--border-accent)',
             display: 'flex',
@@ -341,8 +341,8 @@ export const DashboardPage: React.FC = () => {
             gap: '1.5rem'
           }}
         >
-          <div style={{ flex: '1 1 360px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem' }}>
+          <div style={{ flex: '1 1 280px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.65rem', flexWrap: 'wrap' }}>
               <span className="byte-mint-box">
                 ACTIVE ASSIGNMENT
               </span>
@@ -351,7 +351,7 @@ export const DashboardPage: React.FC = () => {
               </span>
             </div>
 
-            <h2 style={{ fontSize: '1.85rem', fontWeight: 800, margin: '0 0 0.4rem 0' }}>
+            <h2 style={{ fontSize: 'clamp(1.35rem, 4.5vw, 1.85rem)', fontWeight: 800, margin: '0 0 0.4rem 0' }}>
               Stage {currentStage.id}: {currentStage.title}
             </h2>
 
@@ -362,7 +362,7 @@ export const DashboardPage: React.FC = () => {
 
           <Link
             to={`/tasks/stages/${currentStage.id}`}
-            className="byte-btn byte-btn-primary byte-btn-lg"
+            className="byte-btn byte-btn-primary byte-btn-lg byte-mobile-w-full"
             style={{ textDecoration: 'none' }}
           >
             <span>Open Mission Briefing</span>

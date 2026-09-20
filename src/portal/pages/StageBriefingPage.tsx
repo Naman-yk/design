@@ -98,7 +98,7 @@ export const StageBriefingPage: React.FC = () => {
       <div
         className="byte-card"
         style={{
-          padding: '2rem',
+          padding: 'clamp(1.25rem, 3vw, 2rem)',
           marginBottom: '2rem',
           position: 'relative'
         }}
@@ -128,7 +128,7 @@ export const StageBriefingPage: React.FC = () => {
           <StatusBadge status={stageProgress?.status || 'unlocked'} />
         </div>
 
-        <h1 style={{ fontSize: '2.25rem', lineHeight: 1.2, fontWeight: 800, margin: '0 0 1rem 0' }}>
+        <h1 style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)', lineHeight: 1.2, fontWeight: 800, margin: '0 0 1rem 0' }}>
           {briefing.title}
         </h1>
 
@@ -169,7 +169,7 @@ export const StageBriefingPage: React.FC = () => {
       <div
         className="byte-card"
         style={{
-          padding: '2rem',
+          padding: 'clamp(1.25rem, 3vw, 2rem)',
           marginBottom: '2rem'
         }}
       >
@@ -196,13 +196,13 @@ export const StageBriefingPage: React.FC = () => {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
           gap: '1.5rem',
           marginBottom: '2rem'
         }}
       >
         {/* Deliverables */}
-        <div className="byte-card" style={{ padding: '1.75rem' }}>
+        <div className="byte-card" style={{ padding: 'clamp(1.25rem, 2.5vw, 1.75rem)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
             <FileCheck style={{ width: '18px', height: '18px', color: 'var(--byte-accent)' }} />
             <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700 }}>
@@ -219,7 +219,7 @@ export const StageBriefingPage: React.FC = () => {
         </div>
 
         {/* Constraints & Checks */}
-        <div className="byte-card" style={{ padding: '1.75rem' }}>
+        <div className="byte-card" style={{ padding: 'clamp(1.25rem, 2.5vw, 1.75rem)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
             <Shield style={{ width: '18px', height: '18px', color: '#f59e0b' }} />
             <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700 }}>
@@ -241,8 +241,8 @@ export const StageBriefingPage: React.FC = () => {
         <div
           className="byte-card"
           style={{
-            padding: '1.5rem',
-            marginBottom: '2.5rem',
+            padding: '1.25rem',
+            marginBottom: '2rem',
             background: 'rgba(0, 0, 0, 0.25)'
           }}
         >
@@ -280,14 +280,14 @@ export const StageBriefingPage: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '1.25rem',
-            padding: '1.75rem 2rem',
+            padding: 'clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 3vw, 2rem)',
             background: 'linear-gradient(135deg, rgba(34, 197, 121, 0.12) 0%, var(--bg-surface-elevated) 100%)',
             borderRadius: '14px',
             border: '1px solid var(--border-accent)'
           }}
         >
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
+          <div style={{ flex: '1 1 260px', minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem', flexWrap: 'wrap' }}>
               <span className="byte-mint-box">
                 MISSION VERIFIED & ACCEPTED
               </span>
@@ -295,7 +295,7 @@ export const StageBriefingPage: React.FC = () => {
                 STAGE 0{briefing.stageId} COMPLETE
               </span>
             </div>
-            <div style={{ fontWeight: 800, fontSize: '1.25rem', color: '#ffffff', marginBottom: '0.35rem' }}>
+            <div style={{ fontWeight: 800, fontSize: 'clamp(1.1rem, 3.5vw, 1.25rem)', color: '#ffffff', marginBottom: '0.35rem' }}>
               All Challenge Criteria Passed
             </div>
             <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
@@ -303,10 +303,10 @@ export const StageBriefingPage: React.FC = () => {
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', flex: '1 1 240px' }}>
             <Link
               to={`/tasks/submissions/${stageProgress.latestSubmissionId || 'sub_01H1PASS1'}`}
-              className="byte-btn byte-btn-secondary"
+              className="byte-btn byte-btn-secondary byte-mobile-w-full"
             >
               <Award style={{ width: '16px', height: '16px' }} />
               <span>Review Verified Records</span>
@@ -315,7 +315,7 @@ export const StageBriefingPage: React.FC = () => {
             {stageId < 6 && (
               <Link
                 to={`/tasks/stages/${stageId + 1}`}
-                className="byte-btn byte-btn-primary"
+                className="byte-btn byte-btn-primary byte-mobile-w-full"
                 style={{ textDecoration: 'none' }}
               >
                 <span>Advance to Stage 0{stageId + 1}</span>
@@ -333,19 +333,19 @@ export const StageBriefingPage: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '1.25rem',
-            padding: '1.75rem 2rem',
+            padding: 'clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 3vw, 2rem)',
             background: 'linear-gradient(135deg, rgba(234, 179, 8, 0.12) 0%, var(--bg-surface-elevated) 100%)',
             borderRadius: '14px',
             border: '1px solid rgba(234, 179, 8, 0.4)'
           }}
         >
-          <div>
+          <div style={{ flex: '1 1 260px', minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
               <span style={{ background: '#eab308', color: '#060807', fontWeight: 800, fontSize: '0.8rem', padding: '0.2rem 0.6rem', borderRadius: '4px' }}>
                 SUBMISSION IN PROGRESS
               </span>
             </div>
-            <div style={{ fontWeight: 800, fontSize: '1.25rem', color: '#ffffff', marginBottom: '0.35rem' }}>
+            <div style={{ fontWeight: 800, fontSize: 'clamp(1.1rem, 3.5vw, 1.25rem)', color: '#ffffff', marginBottom: '0.35rem' }}>
               Automated Verification Job Active
             </div>
             <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
@@ -355,7 +355,7 @@ export const StageBriefingPage: React.FC = () => {
 
           <Link
             to={`/tasks/submissions/${stageProgress.latestSubmissionId || 'sub_active_409'}`}
-            className="byte-btn byte-btn-primary byte-btn-lg animate-glow"
+            className="byte-btn byte-btn-primary byte-btn-lg byte-mobile-w-full animate-glow"
             style={{ textDecoration: 'none' }}
           >
             <Clock style={{ width: '18px', height: '18px' }} />
@@ -370,13 +370,13 @@ export const StageBriefingPage: React.FC = () => {
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '1rem',
-            padding: '1.5rem 2rem',
+            padding: 'clamp(1.25rem, 3vw, 1.5rem) clamp(1rem, 3vw, 2rem)',
             background: 'var(--bg-surface-elevated)',
             borderRadius: '14px',
             border: '1px solid var(--border-accent)'
           }}
         >
-          <div>
+          <div style={{ flex: '1 1 260px', minWidth: 0 }}>
             <div style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--text-primary)' }}>
               Ready to submit your solution?
             </div>
@@ -387,7 +387,7 @@ export const StageBriefingPage: React.FC = () => {
 
           <Link
             to={`/tasks/stages/${briefing.stageId}/submit`}
-            className="byte-btn byte-btn-primary byte-btn-lg animate-glow"
+            className="byte-btn byte-btn-primary byte-btn-lg byte-mobile-w-full animate-glow"
             style={{ textDecoration: 'none' }}
           >
             <span>Open Submission Form</span>

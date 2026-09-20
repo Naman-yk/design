@@ -168,7 +168,7 @@ export const FindingsEditor: React.FC<FindingsEditorProps> = ({
             key={finding.id || idx}
             className="byte-card"
             style={{
-              padding: '1.5rem',
+              padding: 'clamp(1rem, 2.5vw, 1.5rem)',
               border: '1px solid var(--border-medium)',
               position: 'relative'
             }}
@@ -180,13 +180,13 @@ export const FindingsEditor: React.FC<FindingsEditorProps> = ({
                 flexWrap: 'wrap',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                gap: '1rem',
+                gap: '0.75rem',
                 marginBottom: '1rem',
                 borderBottom: '1px solid var(--border-subtle)',
                 paddingBottom: '0.75rem'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: '1 1 300px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flex: '1 1 220px', minWidth: 0 }}>
                 <span
                   style={{
                     width: '28px',
@@ -199,7 +199,8 @@ export const FindingsEditor: React.FC<FindingsEditorProps> = ({
                     justifyContent: 'center',
                     fontFamily: 'var(--font-mono)',
                     fontWeight: 700,
-                    fontSize: '0.8rem'
+                    fontSize: '0.8rem',
+                    flexShrink: 0
                   }}
                 >
                   #{idx + 1}
@@ -212,10 +213,11 @@ export const FindingsEditor: React.FC<FindingsEditorProps> = ({
                   disabled={disabled}
                   style={{
                     flex: 1,
+                    minWidth: 0,
                     background: 'var(--bg-surface-elevated)',
                     border: '1px solid var(--border-medium)',
                     borderRadius: '6px',
-                    padding: '0.45rem 0.75rem',
+                    padding: '0.45rem 0.65rem',
                     color: 'var(--text-primary)',
                     fontSize: '0.8125rem'
                   }}
@@ -231,7 +233,7 @@ export const FindingsEditor: React.FC<FindingsEditorProps> = ({
                 </select>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
                 {/* Severity pill buttons */}
                 {(['high', 'medium', 'low'] as const).map((sev) => (
                   <button
